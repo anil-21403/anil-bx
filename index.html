@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anil B.X - Official Channel</title>
-    <meta name="description" content="Anil B.X (@anilbx) YouTube channel: Gaming, edits, and creative content.">
+    <meta name="description" content="Anil B.X (@anilbx) - Creative gaming edits and content on YouTube.">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
     <style>
         :root { --primary: #ff0000; --glow: #ff3333; --bg: #000; --text: #fff; }
         body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: 'Roboto', sans-serif; }
@@ -40,6 +41,8 @@
         .share-buttons { text-align: center; margin: 40px 0; }
         .share-buttons a { display: inline-block; margin: 10px; padding: 12px 25px; background: var(--primary); border-radius: 50px; color: #fff; text-decoration: none; }
         footer { text-align: center; padding: 40px; background: #0a0a0a; }
+        .loading { display: none; text-align: center; font-size: 20px; }
+        .error { color: #ff6666; text-align: center; }
     </style>
 </head>
 <body>
@@ -47,16 +50,14 @@
     <div id="particles-js"></div>
 
     <div class="header-banner">
-        <!-- Real Channel Banner (auto-updates from YouTube) -->
-        <img src="https://yt3.ggpht.com/channel_banner_url_pattern_if_known_or_placeholder - but YouTube banners use dynamic URLs; use a high-res pattern or upload your own" class="banner-img" alt="Channel Banner">
+        <img src="" alt="Anil B.X Banner" class="banner-img" id="banner-img">
         <div class="content-overlay">
-            <!-- Real Profile Picture (replace CHANNEL_ID with your actual if known; standard pattern) -->
-            <img src="https://yt3.googleusercontent.com/ytc/your_actual_profile_if_known_or_check_youtube_studio=s800-c-k-c0x00ffffff-no-rj" alt="Anil B.X Logo" class="logo">
+            <img src="" alt="Anil B.X Logo" class="logo" id="logo-img">
             <h1>Anil B.X</h1>
-            <p style="font-size:28px;">@anilbx | Your Creative Universe</p>
+            <p style="font-size:28px;">@anilbx | Your Creative Hub</p>
             <div class="buttons">
-                <a href="https://youtube.com/@anilbx" target="_blank">Visit Channel</a>
-                <a href="https://youtube.com/@anilbx?sub_confirmation=1" target="_blank">Subscribe</a>
+                <a href="https://www.youtube.com/@anilbx" target="_blank">Visit Channel</a>
+                <a href="https://www.youtube.com/@anilbx?sub_confirmation=1" target="_blank">Subscribe</a>
             </div>
         </div>
     </div>
@@ -65,55 +66,48 @@
 
         <section>
             <h2>About Anil B.X</h2>
-            <p style="font-size:20px; text-align:center; line-height:1.8;">Welcome to Anil B.X – gaming edits, creative videos, and more!<br><br>
-            Add your full channel description here from YouTube Studio.</p>
-            <div class="stats-grid">
-                <div class="stat-box"><h3>Update</h3><p>Subscribers</p></div>
-                <div class="stat-box"><h3>Update</h3><p>Videos</p></div>
-                <div class="stat-box"><h3>Update</h3><p>Total Views</p></div>
-                <div class="stat-box"><h3>Update</h3><p>Joined Date</p></div>
+            <p id="about-description" style="font-size:20px; text-align:center; line-height:1.8;">Welcome to Anil B.X – gaming, creative edits, and entertaining content!<br><br>
+            (Update this with your full description from YouTube Studio > About)</p>
+            <div class="stats-grid" id="stats-grid">
+                <div class="stat-box"><h3 id="subscribers">Loading...</h3><p>Subscribers</p></div>
+                <div class="stat-box"><h3 id="videos">Loading...</h3><p>Videos</p></div>
+                <div class="stat-box"><h3 id="views">Loading...</h3><p>Total Views</p></div>
+                <div class="stat-box"><h3 id="joined">Loading...</h3><p>Joined Date</p></div>
             </div>
         </section>
 
         <section>
-            <h2>Channel Analysis - Video Views Chart</h2>
+            <h2>Channel Analysis - Video Views Chart (Example)</h2>
             <div class="chart">
-                <!-- Update with your actual video titles and relative views % -->
-                <div class="bar-container"><div class="bar-label"><span>Your Top Video</span><span>Highest views</span></div><div class="bar" style="--width:100%;"></div></div>
-                <div class="bar-container"><div class="bar-label"><span>Video 2</span><span>Views</span></div><div class="bar" style="--width:80%;"></div></div>
-                <!-- Add more based on your videos -->
+                <p>Update with your actual video views for accurate bars.</p>
+                <div class="bar-container"><div class="bar-label"><span>Latest Video</span><span>Views</span></div><div class="bar" style="--width:100%;"></div></div>
+                <!-- Add more bars here -->
             </div>
         </section>
 
         <section>
             <h2>Latest Videos</h2>
-            <div class="videos">
-                <!-- Automatically add your actual videos here: Replace VIDEO_ID with real ones from your channel URLs (e.g., watch?v=VIDEO_ID) -->
-                <div class="video-card">
-                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe>
-                    <p style="padding:15px; text-align:center;">Your Video Title 1</p>
-                </div>
-                <div class="video-card">
-                    <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe>
-                    <p style="padding:15px; text-align:center;">Your Video Title 2</p>
-                </div>
-                <!-- Add up to 6-8 of your latest videos -->
+            <div class="loading" id="loading">Loading videos...</div>
+            <div class="error" id="error"></div>
+            <div class="videos" id="videos">
+                <!-- Videos will be loaded here -->
             </div>
-            <p style="text-align:center; margin-top:40px;"><a href="https://youtube.com/@anilbx/videos" target="_blank" style="font-size:22px; color:var(--primary);">Watch All Videos →</a></p>
+            <p style="text-align:center; margin-top:40px;"><a href="https://www.youtube.com/@anilbx/videos" target="_blank" style="font-size:22px; color:var(--primary);">Watch All Videos on YouTube →</a></p>
         </section>
 
         <section class="share-buttons">
             <h2>Share This Website</h2>
-            <a href="https://twitter.com/intent/tweet?text=Check out Anil B.X YouTube! &url=YOUR_SITE_URL" target="_blank">Share on X</a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_SITE_URL" target="_blank">Share on Facebook</a>
-            <a href="https://wa.me/?text=Anil B.X: YOUR_SITE_URL" target="_blank">Share on WhatsApp</a>
+            <a href="https://twitter.com/intent/tweet?text=Check out Anil B.X YouTube channel website! 🚀&url=YOUR_WEBSITE_URL" target="_blank">Share on X</a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_WEBSITE_URL" target="_blank">Share on Facebook</a>
+            <a href="https://wa.me/?text=Anil B.X website: YOUR_WEBSITE_URL" target="_blank">Share on WhatsApp</a>
             <a onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied!')">Copy Link</a>
+            <p>Replace YOUR_WEBSITE_URL after hosting.</p>
         </section>
 
     </div>
 
     <footer>
-        © 2025 Anil B.X | <a href="https://youtube.com/@anilbx" target="_blank">YouTube Channel</a>
+        © 2025 Anil B.X | <a href="https://www.youtube.com/@anilbx" target="_blank">YouTube Channel</a>
     </footer>
 
     <script>
@@ -121,6 +115,98 @@
             particles: { number: { value: 100 }, color: { value: "#ff0000" }, opacity: { value: 0.6 }, size: { value: 3 }, line_linked: { enable: true, color: "#ff0000" }, move: { speed: 2 } },
             interactivity: { events: { onhover: { enable: true, mode: "repulse" } } }
         });
+
+        // YouTube API Key - Get from https://console.developers.google.com/
+        const API_KEY = 'YOUR_YOUTUBE_API_KEY_HERE';
+        const CHANNEL_HANDLE = '@anilbx';
+
+        function initClient() {
+            gapi.client.init({
+                apiKey: API_KEY,
+                discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest'],
+            }).then(() => {
+                loadChannelData();
+            }).catch(error => {
+                console.error('Error initializing GAPI client', error);
+                document.getElementById('error').textContent = 'Failed to load YouTube data. Please check the API key.';
+            });
+        }
+
+        function loadChannelData() {
+            // First, search for channel by handle to get channel ID
+            gapi.client.youtube.search.list({
+                part: 'snippet',
+                q: CHANNEL_HANDLE,
+                type: 'channel',
+                maxResults: 1
+            }).then(response => {
+                const channelId = response.result.items[0].snippet.channelId;
+                // Now get channel details
+                return gapi.client.youtube.channels.list({
+                    part: 'snippet,statistics,brandingSettings',
+                    id: channelId
+                });
+            }).then(response => {
+                const channel = response.result.items[0];
+                updateChannelInfo(channel);
+                // Load latest videos
+                loadLatestVideos(channel.id);
+            }).catch(error => {
+                console.error('Error loading channel data', error);
+                document.getElementById('error').textContent = 'Failed to load channel data.';
+            });
+        }
+
+        function updateChannelInfo(channel) {
+            // Update banner
+            const bannerUrl = channel.brandingSettings?.image?.bannerExternalUrl || channel.snippet.thumbnails.high.url;
+            document.getElementById('banner-img').src = bannerUrl;
+
+            // Update logo
+            const logoUrl = channel.snippet.thumbnails.high.url;
+            document.getElementById('logo-img').src = logoUrl;
+
+            // Update description
+            document.getElementById('about-description').textContent = channel.snippet.description;
+
+            // Update stats
+            document.getElementById('subscribers').textContent = parseInt(channel.statistics.subscriberCount).toLocaleString();
+            document.getElementById('videos').textContent = channel.statistics.videoCount;
+            document.getElementById('views').textContent = parseInt(channel.statistics.viewCount).toLocaleString();
+            document.getElementById('joined').textContent = new Date(channel.snippet.publishedAt).getFullYear();
+        }
+
+        function loadLatestVideos(channelId) {
+            document.getElementById('loading').style.display = 'block';
+            gapi.client.youtube.search.list({
+                part: 'snippet',
+                channelId: channelId,
+                order: 'date',
+                maxResults: 4,
+                type: 'video'
+            }).then(response => {
+                document.getElementById('loading').style.display = 'none';
+                const videos = response.result.items;
+                const videosContainer = document.getElementById('videos');
+                videosContainer.innerHTML = '';
+                videos.forEach(video => {
+                    const videoCard = document.createElement('div');
+                    videoCard.className = 'video-card';
+                    videoCard.innerHTML = `
+                        <iframe src="https://www.youtube.com/embed/${video.id.videoId}" allowfullscreen></iframe>
+                        <p style="padding:15px; text-align:center;">${video.snippet.title}</p>
+                    `;
+                    videosContainer.appendChild(videoCard);
+                });
+            }).catch(error => {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').textContent = 'Failed to load videos.';
+                console.error('Error loading videos', error);
+            });
+        }
+
+        // Load GAPI and init
+        gapi.load('client', initClient);
     </script>
 
 </body>
